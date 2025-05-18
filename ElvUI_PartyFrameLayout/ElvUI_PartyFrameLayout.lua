@@ -75,10 +75,17 @@ end
 
 function PFLayout:Update()
     if E.db.ElvUI_PartyFrameLayout.enable then
+        if ElvUF_PartyGroup1 and not self:IsHooked(ElvUF_PartyGroup1, "Update") then
+            self:SecureHook(ElvUF_PartyGroup1, "Update", "ApplyLayout")
+        end
         self:ApplyLayout()
     else
-        if ElvUF_PartyGroup1 and ElvUF_PartyGroup1.Update then
-            ElvUF_PartyGroup1:Update()
+        if ElvUF_PartyGroup1 and self:IsHooked(ElvUF_PartyGroup1, "Update") then
+            self:Unhook(ElvUF_PartyGroup1, "Update")
+        end
+
+        if E.UnitFrames and E.UnitFrames.Update_AllFrames then
+            E.UnitFrames:Update_AllFrames()
         end
     end
 end
@@ -92,7 +99,7 @@ function PFLayout:InsertOptions()
             enable = {
                 order = 1,
                 type = "toggle",
-                name = "Enable Layout Override",
+                name = "Enable",
                 get = function(info) return E.db.ElvUI_PartyFrameLayout.enable end,
                 set = function(info, value)
                     E.db.ElvUI_PartyFrameLayout.enable = value
@@ -102,7 +109,7 @@ function PFLayout:InsertOptions()
             buttonsPerRow = {
                 order = 2,
                 type = "range",
-                name = "Buttons Per Row",
+                name = "Frames Per Row",
                 min = 1, max = 5, step = 1,
                 disabled = function() return not E.db.ElvUI_PartyFrameLayout.enable end,
                 get = function(info) return E.db.ElvUI_PartyFrameLayout.buttonsPerRow end,
@@ -125,7 +132,6 @@ function PFLayout:Initialize()
         end)
     end)
 
-    -- Hook into ElvUI's internal update function for party frames
     if ElvUF_PartyGroup1 and not self:IsHooked(ElvUF_PartyGroup1, "Update") then
         self:SecureHook(ElvUF_PartyGroup1, "Update", "ApplyLayout")
     end
