@@ -1,3 +1,3 @@
 Party Frame Layout is an ElvUI plugin that adds the ability to display Party Frames in a Grid, by allowing players to specify the amount of frames per row.
 
-![image](https://github.com/user-attachments/assets/0a92f3e9-338c-4017-9523-f00c2d5b9ac4)
+![Party Frame Layout Demo](https://github.com/user-attachments/assets/4a3f2840-c2a5-40a1-b74c-c2c6ce0ee83b)
