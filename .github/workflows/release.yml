@@ -5,8 +5,6 @@ on:
   push:
     tags:
       - '**'
-    paths-ignore:
-      - '.github/**'
 
 jobs:
   release: # "release" is a job, you can name it anything you want
