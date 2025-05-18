@@ -1,8 +1,9 @@
 ## Interface: 110105
 ## Author: Roak Static
-## Version: v0.0.4
+## Version: v0.0.5
 ## Title: |cff1784d1ElvUI|r |cffFF5722PartyFrameLayout|r
 ## Notes: Adds a grid layout for Party Frames to ElvUI.
 ## RequiredDeps: ElvUI
+## X-Wago-ID: ZKxqVyGk
 
 ElvUI_PartyFrameLayout.lua
